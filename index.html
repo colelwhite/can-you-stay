@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link href="https://fonts.googleapis.com/css?family=Calligraffitti|Raleway" rel="stylesheet">
+
+
+</head>
+
+<body>
+<center>
+
+<div class="container-fluid">
+  <h1>Can you Stay?</h1>
+  <h3>Housing Security in Nova Scotia's Tri-Counties</h3></center>
+</div>
+
+<div class="container main-div">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="width:100%;">
+      <li class="nav-item">
+        <a class="nav-link active" id="vis-tab" data-toggle="tab" href="#vis" role="tab" aria-controls="vis" aria-selected="true">Visualization</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="doc-tab" data-toggle="tab" href="#doc" role="tab" aria-controls="doc" aria-selected="false">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="attr-tab" data-toggle="tab" href="#attr" role="tab" aria-controls="attr" aria-selected="false">Attribution</a>
+      </li>
+    </ul>
+
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" id="vis" role="tabpanel" aria-labelledby="vis-tab">
+        <p class="body-text">
+          <div></div>
+        </p>
+      </div>
+
+      <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="doc-tab">
+        <br/>
+        <p class="body-text">
+          This visualization was created to demonstrate use of the D3 JavaScript
+          library for mapping. In this case, data from Nova Scotia's 'Housing:
+          Now and Into the Future' needs assessment survey was used, which aims
+          to identify housing insecurity issues within the province's rural
+          communities. This visualization focuses on exploring just one of the
+          survey's questions and a few of its implications: <i>Are you able to
+          stay where you're currently living?</i>
+        </p>
+        <p class="body-text">
+        To gain insight into this topic, understanding who may be
+        most vulnerable and why, maps can be used to highlight geographic
+        regions, and bar charts and other infographics can be used to make
+        statistics more interpretable. I felt that this information did not
+        lend itself to display on a static print map, and that a dynamic web
+        map would be a better choice. D3 in particular seemed especially
+        well-suited to the task of pairing geographic information with
+        statistics.
+        </p>
+        <p class="body-text">
+        To create the map, census subdivision shapefiles were obtained from the
+        Statistics Canada website. Next, using the Mapshaper web utility, these were
+        converted to GeoJSON and simplified to remove unneccessary detail that
+        would otherwise result in slow page loading. Survey
+        responses in csv format were processed using QGIS 3.4.4 and used to
+        create a dot density layer identifying the number of respondants for each
+        area, and their answer to the question. These were also converted to
+        GeoJSON, allowing them to be displayed on the web. QGIS and the Group Stats plugin
+        were used to extract the 'Ideal next residence' data displayed in the pie
+        chart for each area.
+        </p>
+        <p class="body-text">
+        A basic HTML website was created to display the map and the D3 library was
+        imported. Using D3, a GeoMercator projection was defined and centered on
+        Nova Scotia. The GeoJSON data was loaded and displayed. JavaScript code was
+        written allowing the user to zoom in on a selected map area to obtain
+        greater detail, displaying the dot density layer illustrating movers and
+        non-movers. A custom SVG icon was used for this dot density layer, with a
+        solid person icon representing those who could stay and a transparent
+        person representing movers. Upon zooming in, a D3-generated pie chart also
+        appears, displaying respondants' answer to the question, 'What is your
+        ideal next residence?' This information can be used to gain insight into
+        what type of housing may be most in demand for each area.  JavaScript was
+        also used to provide functionality such as mouseover highlights and
+        appearance of place names.
+        </p>
+        <p class="body-text">
+        The charts consist of SVG elements
+        dynamically generated using D3 and numeric data arrays computed using QGIS.
+        JavaScript code was written to populate the labels for these, with logic
+        added to prevent issues such as overlapping or upside-down text where
+        possible.
+        </p>
+        <p class="body-text">
+        CSS was used to consistently customize the appearance of all elements. The
+        Bootstrap library was used to provide a responsive layout for the website.
+        </p>
+      </div>
+      <div class="tab-pane fade" id="attr" role="tabpanel" aria-labelledby="attr-tab">
+        <br/>
+        <p class="body-text">
+          Map produced by Nicole White, February 2019.
+        </p>
+        <p class="body-text">
+          2016 Cartographic Boundary File: Census Subdivisions
+          <br/>
+          <a href="https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2016-eng.cfm">
+             https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2016-eng.cfm
+           </a>
+        </p>
+        <p class="body-text">
+          Housing: Now and Into the Future: Survey Data
+          <br/>
+          Obtained from Jennifer Lamrock and Denise Vachon, Nova Scotia Public
+          Health.
+        <p class="body-text">
+          <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+      </div>
+
+</body>
+<script src='js/main.js' type='text/javascript'></script>
+</html>
